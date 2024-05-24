@@ -10,6 +10,7 @@ __pycache__/
 .Python
 Scripts/
 Library/
+share/
 Include/
 build/
 develop-eggs/

@@ -23,16 +23,30 @@ GROQ_LLM = ChatGroq(
 
 init(autoreset=True)
 
+# cap = cv2.VideoCapture(0)
+# def capture_image():
+#     ret, frame = cap.read()
+#     if ret:
+#         # Convert the frame from BGR to RGB
+#         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+#         # Save the image
+#         image_path = "captured_image.png"
+#         cv2.imwrite(image_path, frame)
+#         print("Image captured and saved as captured_image.png")
+#         return image_path
+#     return None
+
 cap = cv2.VideoCapture(0)
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
 def capture_image():
     ret, frame = cap.read()
     if ret:
         # Convert the frame from BGR to RGB
-        frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         # Save the image
         image_path = "captured_image.png"
         cv2.imwrite(image_path, frame)
-        print("Image captured and saved as captured_image.png")
+        print(image_path)
         return image_path
     return None
 
@@ -149,16 +163,24 @@ def play_audio_gradio(audio_file_path):
     play_audio(audio_file_path)
     return "Audio played successfully."
 
+def show_image():
+    image_path = capture_image()
+    print('3st')
+    return image_path
+
 app = gr.Blocks()
 
 with app:
-    gr.Markdown("# OCR and PDF Generation")
+    gr.Markdown("# With Visual Talking Bot")
     start_button = gr.Button("Start Conversation")
     output_text = gr.Textbox(label="Audio File Path")
     play_button = gr.Button("Play Audio")
-
-    start_button.click(fn=process_conversation, inputs=None, outputs=output_text)
+    image_output = gr.Image(label="Captured Image", type="filepath", width=500, height=500)
+    
+    start_button.click(fn=process_conversation, inputs=None, outputs=   output_text)
+    #start_button.click(fn=process_conversation, inputs=None, outputs=[output_text])
     play_button.click(fn=play_audio_gradio, inputs=output_text, outputs=None)
+    start_button.click(fn=show_image, inputs=None, outputs=image_output)
 
 if __name__ == "__main__":
     app.launch()
