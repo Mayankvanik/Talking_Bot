@@ -168,6 +168,11 @@ def show_image():
     print('3st')
     return image_path
 
+webcam_output = gr.Video(label="Live Webcam Feed")
+def webcam_feed():
+    # Code to capture webcam feed goes here
+    return webcam_output
+
 app = gr.Blocks()
 
 with app:
@@ -176,8 +181,9 @@ with app:
     output_text = gr.Textbox(label="Audio File Path")
     play_button = gr.Button("Play Audio")
     image_output = gr.Image(label="Captured Image", type="filepath", width=500, height=500)
+    #ape = gr.Interface(fn=webcam_feed,inputs=[webcam_output], outputs=None)
     
-    start_button.click(fn=process_conversation, inputs=None, outputs=   output_text)
+    start_button.click(fn=process_conversation, inputs=None, outputs= output_text)
     #start_button.click(fn=process_conversation, inputs=None, outputs=[output_text])
     play_button.click(fn=play_audio_gradio, inputs=output_text, outputs=None)
     start_button.click(fn=show_image, inputs=None, outputs=image_output)
