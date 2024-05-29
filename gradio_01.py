@@ -79,7 +79,7 @@ prompt = PromptTemplate(
 
     user
     Conduct a comprehensive analysis of the user message provided and categorize it into one of the following categories:
-        visual - used when someone is asking about how they look, or how the environment behind them looks, or any related visual question about the user.
+        visual - used when someone is asking about how they look, or how the environment behind them looks, or any related visual question about the user, or tell what is he doing.
         regular - used when someone asks about non-visual information or asks about some topic or query.
     Output a single category only from the types ('visual', 'regular').
     Example:
