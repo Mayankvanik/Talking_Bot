@@ -17,7 +17,7 @@ import gradio as gr
 
 # Initialize Gradio and other components
 GROQ_LLM = ChatGroq(
-    groq_api_key="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",
+    groq_api_key="",
     model="llama3-70b-8192"
 )
 
@@ -125,8 +125,8 @@ def play_audio(file_path):
     pygame.mixer.quit()
 
 def process_conversation():
-    client = Groq(api_key="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")
-    client_1 = OpenAI(api_key="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")
+    client = Groq(api_key="")
+    client_1 = OpenAI(api_key="sk-")
     chat_history = [{"role": "system", "content": "you are a helpful assistant, keep your answer short and confident"}]
 
     try:

@@ -7,7 +7,7 @@ from colorama import Fore, Style, init
 import warnings
 from openai import OpenAI
 from langchain_groq import ChatGroq
-os.environ["GROQ_API_KEY"] = "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"
+os.environ["GROQ_API_KEY"] = ""
 
 # logging.basicConfig(level=logging.info, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -99,7 +99,7 @@ def play_audio(file_path):
 
 # print('kkkkkkkkkkd')
 def main():
-    client = OpenAI(api_key="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")
+    client = OpenAI(api_key="sk-")
     client_1 = ChatGroq(
             model="llama3-70b-8192"
         )
